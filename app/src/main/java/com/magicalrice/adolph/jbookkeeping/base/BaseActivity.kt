@@ -28,6 +28,16 @@ abstract class BaseActivity : AppCompatActivity() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (!isSetupImmersive) {
+            setImmersiveStatus()
+            isSetupImmersive = true
+        }
+    }
+
+    protected abstract fun onInit(savedInstanceState: Bundle?)
+
     /**
      * 获取ViewDataBinding
      */
