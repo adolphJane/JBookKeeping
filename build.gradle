@@ -44,4 +44,5 @@ ext {
     baseRecyclerviewVersion = '2.9.40'
     debugDatabaseVersion = '1.0.3'
     buglyVersion = '2.6.6'
+    easyPermissionVersion = '1.2.0'
 }

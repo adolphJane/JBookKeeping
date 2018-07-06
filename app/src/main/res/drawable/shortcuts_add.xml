@@ -1,0 +1,20 @@
+<!--
+  ~ Copyright 2018 Bakumon. https://github.com/Bakumon
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~  limitations under the License.
+  -->
+
+<vector android:height="24dp" android:viewportHeight="1024"
+    android:viewportWidth="1024" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#bfbfbf" android:pathData="M512,0C229.24,0 0,229.24 0,512S229.24,1024 512,1024 1024,794.76 1024,512 794.76,0 512,0zM731.3,542.11h-189.19v189.19a19.02,19.02 0,0 1,-38.05 0v-189.19h-189.19a19.02,19.02 0,0 1,0 -38.05h189.19v-189.19a19.02,19.02 0,0 1,38.05 0v189.19h189.19a19.02,19.02 0,0 1,0 38.05z"/>
+</vector>

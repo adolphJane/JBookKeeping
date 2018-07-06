@@ -146,4 +146,6 @@ dependencies {
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.baseRecyclerviewVersion"
     //debug_database
     debugImplementation "com.amitshekhar.android:debug-db:$rootProject.debugDatabaseVersion"
+    //easy_permission
+    implementation "pub.devrel:easypermissions:$rootProject.easyPermissionVersion"
 }

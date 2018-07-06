@@ -1,5 +1,7 @@
 package com.magicalrice.adolph.jbookkeeping.base
 
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
@@ -36,7 +38,16 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        mDisposable.clear()
+    }
+
     protected abstract fun onInit(savedInstanceState: Bundle?)
+
+    protected fun inflate(@LayoutRes resource: Int): View {
+        return layoutInflater.inflate(resource,null,false)
+    }
 
     /**
      * 获取ViewDataBinding
@@ -58,5 +69,14 @@ abstract class BaseActivity : AppCompatActivity() {
     protected fun setImmersiveView() : Array<View> {
         val rootView = dataBinding.root as ViewGroup
         return arrayOf(rootView.getChildAt(0))
+    }
+
+    override fun getResources(): Resources {
+        //固定字体大小，不随系统字体大小改变
+        val res = super.getResources()
+        val config = Configuration()
+        config.setToDefaults()
+        res.updateConfiguration(config,res.displayMetrics)
+        return res
     }
 }
