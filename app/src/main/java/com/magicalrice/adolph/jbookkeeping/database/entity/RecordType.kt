@@ -31,6 +31,13 @@ class RecordType : Serializable {
         this.type = type
     }
 
+    constructor(name: String, imgName: String, type: Int, ranking: Long) {
+        this.name = name
+        this.imgName = imgName
+        this.type = type
+        this.ranking = ranking
+    }
+
     constructor(id: Int,name: String,imgName: String,type: Int,ranking: Long) {
         this.id = id
         this.name = name

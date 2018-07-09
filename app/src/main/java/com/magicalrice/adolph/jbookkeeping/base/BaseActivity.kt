@@ -27,7 +27,7 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding = DataBindingUtil.setContentView(this,layoutId)
-
+        onInit(savedInstanceState)
     }
 
     override fun onResume() {
@@ -52,6 +52,7 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * 获取ViewDataBinding
      */
+    @Suppress("UNCHECKED_CAST")
     protected fun <T : ViewDataBinding> getDataBinding(): T{
         return dataBinding as T
     }

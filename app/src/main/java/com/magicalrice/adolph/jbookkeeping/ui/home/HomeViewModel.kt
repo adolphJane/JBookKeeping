@@ -13,6 +13,7 @@ import io.reactivex.Flowable
 class HomeViewModel(dataSource: AppDataSource) : BaseViewModel(dataSource) {
     val currentMonthRecordWithTypes: Flowable<List<RecordWithType>>
         get() = mDataSource.getCurrentMonthRecordWithTypes()
+
     val currentMonthSumMoney: Flowable<List<SumMoneyBean>>
         get() = mDataSource.getCurrentMonthSumMoney()
 
