@@ -30,7 +30,7 @@ class RecordType : Serializable {
         this.imgName = imgName
         this.type = type
     }
-
+    @Ignore
     constructor(name: String, imgName: String, type: Int, ranking: Long) {
         this.name = name
         this.imgName = imgName

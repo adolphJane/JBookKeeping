@@ -28,7 +28,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    supportLibVersion = '28.0.0-alpha3'
+    supportLibVersion = '27.1.0'
     daggerVersion = '2.15'
     retrofitVersion = '2.3.0'
     okhttpVersion = '3.9.1'
@@ -48,4 +48,7 @@ ext {
     easyPermissionVersion = '1.2.0'
     dialogVersion = '0.9.6.0'
     storageVersion = '2.1.0'
+    prettyVersion = '4.0.1.Final'
+    arouterVersion = '1.3.1'
+    arouterCVersion = '1.1.4'
 }

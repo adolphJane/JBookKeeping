@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <data>
+        <variable
+            name="title"
+            type="String"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingBottom="12dp"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="12dp">
+        <com.magicalrice.adolph.jbookkeeping.view.jui.JUIAlphaImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            android:contentDescription="@string/content_des_close"/>
+        <com.magicalrice.adolph.jbookkeeping.view.jui.JUIAlphaLinearLayout
+            android:id="@+id/ll_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:gravity="center_vertical"
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp">
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@{title}"
+                android:textColor="@color/colorTextWhite"
+                android:textSize="20sp"/>
+
+            <ImageView
+                android:id="@+id/iv_title"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/ic_arrow_down"
+                android:visibility="gone"/>
+        </com.magicalrice.adolph.jbookkeeping.view.jui.JUIAlphaLinearLayout>
+
+        <com.magicalrice.adolph.jbookkeeping.view.jui.JUIAlphaTextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="5dp"
+            android:textColor="@color/colorTextWhite" />
+
+        <com.magicalrice.adolph.jbookkeeping.view.jui.JUIAlphaImageButton
+            android:id="@+id/btn_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_share"
+            android:visibility="gone"/>
+    </RelativeLayout>
+</layout>

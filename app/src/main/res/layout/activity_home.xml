@@ -9,7 +9,7 @@
         <import type="com.magicalrice.adolph.jbookkeeping.database.entity.SumMoneyBean"/>
         <variable
             name="sumMoneyBeanList"
-            type="List&lt;SumMoneyBean>"/>
+            type="List&lt;SumMoneyBean&gt;"/>
     </data>
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -138,7 +138,6 @@
             android:clickable="true"
             android:focusable="true"
             android:onClick="addRecordClick"
-            app:srcCompat="@drawable/ic_add"
-            tools:ignore="VectorDrawableCompat" />
+            android:src="@drawable/ic_add" />
     </android.support.design.widget.CoordinatorLayout>
 </layout>

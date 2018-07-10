@@ -5,12 +5,15 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import com.afollestad.materialdialogs.MaterialDialog
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.magicalrice.adolph.jbookkeeping.ConfigManager
 import com.magicalrice.adolph.jbookkeeping.Injection
 import com.magicalrice.adolph.jbookkeeping.R
 import com.magicalrice.adolph.jbookkeeping.base.BaseActivity
+import com.magicalrice.adolph.jbookkeeping.base.RouterTable
 import com.magicalrice.adolph.jbookkeeping.database.entity.RecordWithType
 import com.magicalrice.adolph.jbookkeeping.databinding.ActivityHomeBinding
 import com.magicalrice.adolph.jbookkeeping.datasource.BackupFailException
@@ -23,6 +26,7 @@ import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 import pub.devrel.easypermissions.PermissionRequest
 
+@Route(path = RouterTable.ITEM_HOME,name = "主页面")
 class HomeActivity : BaseActivity(), EasyPermissions.PermissionCallbacks, EasyPermissions.RationaleCallbacks {
     private lateinit var mBinding: ActivityHomeBinding
     private lateinit var mViewModel: HomeViewModel
@@ -79,7 +83,7 @@ class HomeActivity : BaseActivity(), EasyPermissions.PermissionCallbacks, EasyPe
         mAdapter = HomeAdapter(null)
         mBinding.rvHome.adapter = mAdapter
 
-        mAdapter.setOnItemChildClickListener { _, _, position ->
+        mAdapter.setOnItemChildLongClickListener { _, _, position ->
             showOperateDialog(mAdapter.data[position])
             false
         }
@@ -207,6 +211,18 @@ class HomeActivity : BaseActivity(), EasyPermissions.PermissionCallbacks, EasyPe
         }
     }
 
+    private fun getCurrentMonthSumMoney() {
+        mDisposable.add(mViewModel.currentMonthSumMoney
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    mBinding.sumMoneyBeanList = it
+                }) { throwable ->
+                    ToastUtils.show(R.string.toast_current_sum_money_fail)
+                    Logger.e("本月支出收入总数获取失败", throwable)
+                })
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
@@ -218,19 +234,14 @@ class HomeActivity : BaseActivity(), EasyPermissions.PermissionCallbacks, EasyPe
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-    }
-
     override fun onResume() {
         super.onResume()
-        getCurrentMonthRecords()
+        getCurrentMonthSumMoney()
         if (ConfigManager.isSuccessive) {
-            mBinding.btnAddRecord.setOnLongClickListener {
-
-                false
-            }
+//            mBinding.btnAddRecord.setOnLongClickListener {
+//
+//                false
+//            }
         } else {
             mBinding.btnAddRecord.setOnLongClickListener(null)
         }

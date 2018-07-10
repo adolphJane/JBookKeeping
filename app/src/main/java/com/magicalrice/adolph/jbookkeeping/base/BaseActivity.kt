@@ -75,9 +75,9 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun getResources(): Resources {
         //固定字体大小，不随系统字体大小改变
         val res = super.getResources()
-        val config = Configuration()
-        config.setToDefaults()
-        res.updateConfiguration(config,res.displayMetrics)
+//        val config = Configuration()
+//        config.setToDefaults()
+//        res.updateConfiguration(config,res.displayMetrics)
         return res
     }
 }

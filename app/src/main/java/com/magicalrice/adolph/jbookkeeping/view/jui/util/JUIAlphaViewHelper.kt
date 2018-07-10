@@ -1,4 +1,4 @@
-package com.magicalrice.adolph.jbookkeeping.view.util
+package com.magicalrice.adolph.jbookkeeping.view.jui.util
 
 import android.view.View
 import java.lang.ref.WeakReference

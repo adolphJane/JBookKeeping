@@ -12,6 +12,7 @@ import com.magicalrice.adolph.jbookkeeping.database.entity.RecordType
 import com.magicalrice.adolph.jbookkeeping.database.entity.SumMoneyBean
 import com.magicalrice.adolph.jbookkeeping.utils.BigDecimalUtil
 import com.magicalrice.adolph.jbookkeeping.utils.SizeUtils
+import com.orhanobut.logger.Logger
 import java.math.BigDecimal
 
 /**
@@ -66,10 +67,13 @@ object BindAdapter {
     @JvmStatic
     @BindingAdapter("text_income_or_budget")
     fun setTitleIncomeOrBudget(textView: TextView,list: List<SumMoneyBean>?) {
-        if (ConfigManager.budget > 0) {
-            textView.setText(R.string.text_month_remaining_budget)
-        } else {
-            textView.setText(R.string.text_month_income)
+        Logger.e("text_income_or_budget")
+        if (list != null) {
+            if (ConfigManager.budget > 0) {
+                textView.setText(R.string.text_month_remaining_budget)
+            } else {
+                textView.setText(R.string.text_month_income)
+            }
         }
     }
 
