@@ -9,6 +9,7 @@ import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.ViewGroup
+import com.magicalrice.adolph.jbookkeeping.utils.StatusBarUtil
 import io.reactivex.disposables.CompositeDisposable
 
 /**
@@ -61,6 +62,10 @@ abstract class BaseActivity : AppCompatActivity() {
         val views = setImmersiveView()
         if (views.isEmpty()) {
             return
+        }
+        StatusBarUtil.immersive(this)
+        for (view in views) {
+            StatusBarUtil.setPaddingSmart(this,view)
         }
     }
 

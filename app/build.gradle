@@ -165,4 +165,6 @@ dependencies {
 
     //pretty
     implementation "org.ocpsoft.prettytime:prettytime:$rootProject.prettyVersion"
+
+    implementation "com.android.support:customtabs:$rootProject.supportLibVersion"
 }

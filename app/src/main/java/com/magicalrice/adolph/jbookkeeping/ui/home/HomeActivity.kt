@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import com.afollestad.materialdialogs.MaterialDialog
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.magicalrice.adolph.jbookkeeping.ConfigManager
 import com.magicalrice.adolph.jbookkeeping.Injection
 import com.magicalrice.adolph.jbookkeeping.R
@@ -103,7 +104,7 @@ class HomeActivity : BaseActivity(), EasyPermissions.PermissionCallbacks, EasyPe
     }
 
     fun settingClick(view: View) {
-
+        ARouter.getInstance().build(RouterTable.ITEM_SETTING).navigation()
     }
 
     private fun showOperateDialog(record: RecordWithType) {
