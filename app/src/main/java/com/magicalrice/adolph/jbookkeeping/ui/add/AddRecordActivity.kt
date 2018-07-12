@@ -2,12 +2,13 @@ package com.magicalrice.adolph.jbookkeeping.ui.add
 
 import android.os.Bundle
 import com.magicalrice.adolph.jbookkeeping.base.BaseActivity
+import com.magicalrice.adolph.jbookkeeping.databinding.ActivityAddRecordBinding
 
 /**
  * Created by Adolph on 2018/7/11.
  */
 class AddRecordActivity : BaseActivity(){
-//    private lateinit var mBinding:
+    private lateinit var mBinding: ActivityAddRecordBinding
     override val layoutId: Int
         get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
 

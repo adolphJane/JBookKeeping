@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="typeImg"
+            type="com.magicalrice.adolph.jbookkeeping.ui.addtype.TypeImgBean"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_type_item_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+        <RelativeLayout
+            android:layout_width="62dp"
+            android:layout_height="56dp"
+            android:paddingLeft="5dp">
+            <ImageView
+                android:id="@+id/iv_type"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                app:src_img_name="@{typeImg.imgName}"/>
+
+            <ImageView
+                android:id="@+id/iv_check"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_check"
+                android:visibility="@{typeImg.isChecked}"/>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>
