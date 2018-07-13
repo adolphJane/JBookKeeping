@@ -27,7 +27,7 @@ import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 import pub.devrel.easypermissions.PermissionRequest
 
-@Route(path = RouterTable.ITEM_HOME,name = "主页面")
+@Route(path = RouterTable.Url.ITEM_HOME,name = "主页面")
 class HomeActivity : BaseActivity(), EasyPermissions.PermissionCallbacks, EasyPermissions.RationaleCallbacks {
     private lateinit var mBinding: ActivityHomeBinding
     private lateinit var mViewModel: HomeViewModel
@@ -96,15 +96,15 @@ class HomeActivity : BaseActivity(), EasyPermissions.PermissionCallbacks, EasyPe
     }
 
     fun addRecordClick(view: View) {
-
+        ARouter.getInstance().build(RouterTable.Url.ITEM_ADD_RECORD).navigation()
     }
 
     fun statisticsClick(view: View) {
-
+        ARouter.getInstance().build(RouterTable.Url.ITEM_STATISTIC).navigation()
     }
 
     fun settingClick(view: View) {
-        ARouter.getInstance().build(RouterTable.ITEM_SETTING).navigation()
+        ARouter.getInstance().build(RouterTable.Url.ITEM_SETTING).navigation()
     }
 
     private fun showOperateDialog(record: RecordWithType) {

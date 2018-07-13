@@ -20,8 +20,8 @@ import android.support.v7.widget.LinearSmoothScroller
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SnapHelper
 import android.view.View
-
-import me.bakumon.moneykeeper.view.pagerlayoutmanager.PagerConfig.Loge
+import com.magicalrice.adolph.jbookkeeping.view.pagerlayoutmanager.PagerConfig
+import com.magicalrice.adolph.jbookkeeping.view.pagerlayoutmanager.PagerConfig.Loge
 
 /**
  * 作用：分页居中工具

@@ -20,8 +20,8 @@ import android.support.v7.widget.LinearSmoothScroller
 import android.support.v7.widget.RecyclerView
 import android.util.DisplayMetrics
 import android.view.View
-
-import me.bakumon.moneykeeper.view.pagerlayoutmanager.PagerConfig.Logi
+import com.magicalrice.adolph.jbookkeeping.view.pagerlayoutmanager.PagerConfig
+import com.magicalrice.adolph.jbookkeeping.view.pagerlayoutmanager.PagerConfig.Logi
 
 /**
  * 作用：用于处理平滑滚动

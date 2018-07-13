@@ -13,6 +13,6 @@ class LaunchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
-        ARouter.getInstance().build(RouterTable.ITEM_HOME).navigation()
+        ARouter.getInstance().build(RouterTable.Url.ITEM_HOME).navigation()
     }
 }

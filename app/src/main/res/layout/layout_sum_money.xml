@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="java.util.List"/>
+        <import type="com.magicalrice.adolph.jbookkeeping.database.entity.SumMoneyBean"/>
+        <variable
+            name="sumMoneyBeanList"
+            type="List&lt;SumMoneyBean&gt;"/>
+    </data>
+
+    <RadioGroup
+        android:id="@+id/rg_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <RadioButton
+            android:id="@+id/tb_outlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextWhite2"
+            app:text_statistics_outlay="@{sumMoneyBeanList}"/>
+
+        <RadioButton
+            android:id="@+id/rb_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/colorTextWhite2"
+            app:text_statistics_income="@{sumMoneyBeanList}"/>
+
+        <TextView
+            android:id="@+id/tv_overage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/colorTextWhite3"
+            app:text_statistics_overage="@{sumMoneyBeanList}"/>
+    </RadioGroup>
+</layout>

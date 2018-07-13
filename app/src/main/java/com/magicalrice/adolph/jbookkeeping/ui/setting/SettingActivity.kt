@@ -30,7 +30,7 @@ import pub.devrel.easypermissions.PermissionRequest
 /**
  * Created by Adolph on 2018/7/10.
  */
-@Route(path = RouterTable.ITEM_SETTING,name = "设置页面")
+@Route(path = RouterTable.Url.ITEM_SETTING,name = "设置页面")
 class SettingActivity : BaseActivity(),EasyPermissions.PermissionCallbacks {
     private lateinit var mBinding: ActivitySettingBinding
     private lateinit var mViewModel: SettingViewModel
