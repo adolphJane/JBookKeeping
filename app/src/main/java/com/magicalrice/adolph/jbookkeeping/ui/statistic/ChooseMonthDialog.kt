@@ -1,3 +1,19 @@
+/*
+ * Copyright 2018 Bakumon. https://github.com/Bakumon
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
 package com.magicalrice.adolph.jbookkeeping.ui.statistic
 
 import android.content.Context
@@ -10,13 +26,15 @@ import com.magicalrice.adolph.jbookkeeping.R
 import com.magicalrice.adolph.jbookkeeping.base.BaseDataBindingAdapter
 import com.magicalrice.adolph.jbookkeeping.utils.DateUtils
 import com.magicalrice.adolph.jbookkeeping.view.PickerLayoutManager
-import java.util.ArrayList
+import java.util.*
 
 /**
  * 选择月份
- * Created by Adolph on 2018/7/13.
+ *
+ * @author Bakumon https://bakumon
  */
 class ChooseMonthDialog {
+
     private var mContext: Context
     private lateinit var mRvMonth: RecyclerView
     private lateinit var mYearAdapter: PickerAdapter
@@ -29,35 +47,32 @@ class ChooseMonthDialog {
      * Int 1选择的年份
      * Int 2选择的月份
      */
-    var mOnChooseListener:((Int,Int) -> Unit)? = null
+    var mOnChooseListener: ((Int, Int) -> Unit)? = null
 
-    /**
-     * dismiss 监听
-     */
-    var mOnDismissListener:((Unit) -> Unit)? = null
+    var mOnDismissListener: ((Unit) -> Unit)? = null
 
     private var mYear = DateUtils.getCurrentYear()
     private var mMonth = DateUtils.getCurrentMonth()
 
     constructor(context: Context) {
         mContext = context
-
+        setupDialog()
     }
 
-    constructor(context: Context,year: Int,month: Int) {
+    constructor(context: Context, year: Int, month: Int) {
         mContext = context
         mYear = year
         mMonth = month
-
+        setupDialog()
     }
 
     private fun setupDialog() {
         val layoutInflater = LayoutInflater.from(mContext)
-        val contentView = layoutInflater.inflate(R.layout.dialog_choose_month,null,false)
+        val contentView = layoutInflater.inflate(R.layout.dialog_choose_month, null, false)
         val rvYear = contentView.findViewById<RecyclerView>(R.id.rv_year)
         mRvMonth = contentView.findViewById(R.id.rv_month)
 
-        //设置 pickerLayoutManage
+        // 设置 pickerLayoutManage
         val lmYear = PickerLayoutManager(mContext, rvYear, LinearLayoutManager.VERTICAL, false, 3, 0.4f, true)
         rvYear.layoutManager = lmYear
         val lmMonth = PickerLayoutManager(mContext, mRvMonth, LinearLayoutManager.VERTICAL, false, 3, 0.4f, true)
@@ -148,6 +163,7 @@ class ChooseMonthDialog {
     }
 
     companion object {
+
         /**
          * 为什么是 1900
          * 添加记账记录时，选时间 dialog 最小可选的年份是 1900

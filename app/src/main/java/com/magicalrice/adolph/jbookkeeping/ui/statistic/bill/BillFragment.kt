@@ -1,6 +1,7 @@
 package com.magicalrice.adolph.jbookkeeping.ui.statistic.bill
 
 import android.arch.lifecycle.ViewModelProviders
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -27,9 +28,10 @@ import com.magicalrice.adolph.jbookkeeping.utils.ToastUtils
 import com.magicalrice.adolph.jbookkeeping.view.BarChartMarkerView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import java.util.ArrayList
+import java.util.*
 
 /**
+ * 账单Fragment
  * Created by Adolph on 2018/7/13.
  */
 class BillFragment : BaseFragment() {
@@ -47,13 +49,13 @@ class BillFragment : BaseFragment() {
     override fun onInit(savedInstanceState: Bundle?) {
         mBinding = getDataBinding()
         val viewModelFactory = Injection.provideViewModelFactory()
-        mViewModel = ViewModelProviders.of(this,viewModelFactory).get(BillViewModel::class.java)
+        mViewModel = ViewModelProviders.of(this, viewModelFactory).get(BillViewModel::class.java)
 
         mYear = DateUtils.getCurrentYear()
         mMonth = DateUtils.getCurrentMonth()
         mType = RecordType.TYPE_OUTLAY
 
-
+        initView()
     }
 
     private fun initView() {
@@ -91,7 +93,11 @@ class BillFragment : BaseFragment() {
         val xAxis = mBinding.barChart.xAxis
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.setDrawGridLines(false)
-        xAxis.textColor = resources.getColor(R.color.colorTextGray)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            xAxis.textColor = resources.getColor(R.color.colorTextGray, null)
+        } else {
+            xAxis.textColor = resources.getColor(R.color.colorTextGray)
+        }
         xAxis.labelCount = 5
 
         val mv = BarChartMarkerView(context!!)
@@ -119,7 +125,7 @@ class BillFragment : BaseFragment() {
         if (context == null) {
             return
         }
-        ARouter.getInstance().build(RouterTable.Url.ITEM_ADD_RECORD).withSerializable(RouterTable.ExtraKey.KEY_RECORD_BEAN,record).navigation()
+        ARouter.getInstance().build(RouterTable.Url.ITEM_ADD_RECORD).withSerializable(RouterTable.ExtraKey.KEY_RECORD_BEAN, record).navigation()
     }
 
     private fun deleteRecord(record: RecordWithType) {
@@ -159,8 +165,16 @@ class BillFragment : BaseFragment() {
             set1 = BarDataSet(barEntries, "")
             set1.setDrawIcons(false)
             set1.setDrawValues(false)
-            set1.color = resources.getColor(R.color.colorAccent)
-            set1.valueTextColor = resources.getColor(R.color.colorTextWhite)
+            if (Build.VERSION.SDK_INT >= 23) {
+                set1.color = resources.getColor(R.color.colorAccent, null)
+            } else {
+                set1.color = resources.getColor(R.color.colorAccent)
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                set1.valueTextColor = resources.getColor(R.color.colorTextWhite, null)
+            } else {
+                set1.valueTextColor = resources.getColor(R.color.colorTextWhite)
+            }
 
             val dataSets = ArrayList<IBarDataSet>()
             dataSets.add(set1)

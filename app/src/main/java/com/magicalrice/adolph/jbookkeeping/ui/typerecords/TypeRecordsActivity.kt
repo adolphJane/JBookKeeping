@@ -14,9 +14,10 @@
  *  limitations under the License.
  */
 
-package me.bakumon.moneykeeper.ui.typerecords
+package com.magicalrice.adolph.jbookkeeping.ui.typerecords
 
 import android.os.Bundle
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.magicalrice.adolph.jbookkeeping.R
 import com.magicalrice.adolph.jbookkeeping.base.BaseActivity
 import com.magicalrice.adolph.jbookkeeping.base.RouterTable
@@ -28,6 +29,7 @@ import com.magicalrice.adolph.jbookkeeping.ui.statistic.ViewPagerAdapter
  *
  * @author Bakumon https://bakumon
  */
+@Route(path = RouterTable.Url.ITEM_TYPE_RECORD, name = "记账记录")
 class TypeRecordsActivity : BaseActivity() {
 
     private lateinit var mBinding: ActivityStatisticsBinding

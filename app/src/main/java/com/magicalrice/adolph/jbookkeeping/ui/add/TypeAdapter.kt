@@ -1,11 +1,15 @@
 package com.magicalrice.adolph.jbookkeeping.ui.add
 
+import com.alibaba.android.arouter.launcher.ARouter
 import com.magicalrice.adolph.jbookkeeping.BR
+import com.magicalrice.adolph.jbookkeeping.BookKeepingApplication
 import com.magicalrice.adolph.jbookkeeping.R
 import com.magicalrice.adolph.jbookkeeping.base.BaseDataBindingAdapter
+import com.magicalrice.adolph.jbookkeeping.base.RouterTable
 import com.magicalrice.adolph.jbookkeeping.database.entity.RecordType
 
 /**
+ * 类型适配器
  * Created by Adolph on 2018/7/12.
  */
 class TypeAdapter(data: List<RecordType>?) : BaseDataBindingAdapter<RecordType>(R.layout.item_type, data) {
@@ -44,7 +48,7 @@ class TypeAdapter(data: List<RecordType>?) : BaseDataBindingAdapter<RecordType>(
                 }
             }
             // 增加设置 item， type == -1 表示是设置 item
-            val settingItem = RecordType(mContext.getString(R.string.text_setting), "type_item_setting", -1)
+            val settingItem = RecordType(BookKeepingApplication.instance.getString(R.string.text_setting), "type_item_setting", -1)
             result.add(settingItem)
             // 找出上次选中的 item
             var checkPosition = 0
@@ -74,6 +78,9 @@ class TypeAdapter(data: List<RecordType>?) : BaseDataBindingAdapter<RecordType>(
         // 点击设置 item
         val item = getItem(position)
         if (item != null && item.type == -1) {
+            ARouter.getInstance().build(RouterTable.Url.ITEM_TYPE_MANAGE)
+                    .withInt(RouterTable.ExtraKey.KEY_TYPE, mType)
+                    .navigation()
             return
         }
         // 选中某一个 item

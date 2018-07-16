@@ -2,6 +2,7 @@ package com.magicalrice.adolph.jbookkeeping.ui.statistic.reports
 
 import android.arch.lifecycle.ViewModelProviders
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -28,6 +29,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 /**
+ * 报表Fragment
  * Created by Adolph on 2018/7/13.
  */
 class ReportsFragment : BaseFragment() {
@@ -78,7 +80,7 @@ class ReportsFragment : BaseFragment() {
 
     private fun navTypeRecords(typeName: String, typeId: Int) {
         if (context != null) {
-            ARouter.getInstance().build(RouterTable.Url.ITEM_ADD_TYPE)
+            ARouter.getInstance().build(RouterTable.Url.ITEM_TYPE_RECORD)
                     .withString(RouterTable.ExtraKey.KEY_TYPE_NAME, typeName)
                     .withInt(RouterTable.ExtraKey.KEY_RECORD_TYPE, mType)
                     .withInt(RouterTable.ExtraKey.KEY_RECORD_TYPE_ID, typeId)
@@ -135,7 +137,11 @@ class ReportsFragment : BaseFragment() {
             dataSet.yValuePosition = PieDataSet.ValuePosition.INSIDE_SLICE
             dataSet.valueTextSize = 10f
             dataSet.isValueLineVariableLength = true
-            dataSet.valueLineColor = resources.getColor(R.color.colorTextWhite)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                dataSet.valueLineColor = resources.getColor(R.color.colorTextWhite, null)
+            } else {
+                dataSet.valueLineColor = resources.getColor(R.color.colorTextWhite)
+            }
 
             val color: List<Int>
             if (entries.size % 7 == 0) {

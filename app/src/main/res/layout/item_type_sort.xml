@@ -23,7 +23,7 @@
 
         <variable
             name="recordType"
-            type="me.bakumon.moneykeeper.database.entity.RecordType" />
+            type="com.magicalrice.adolph.jbookkeeping.database.entity.RecordType" />
     </data>
 
     <LinearLayout

@@ -8,9 +8,9 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.text.InputType
 import android.text.TextUtils
-import android.util.Log
 import com.afollestad.materialdialogs.MaterialDialog
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.magicalrice.adolph.jbookkeeping.BuildConfig
 import com.magicalrice.adolph.jbookkeeping.ConfigManager
 import com.magicalrice.adolph.jbookkeeping.Constant
@@ -28,6 +28,7 @@ import pub.devrel.easypermissions.EasyPermissions
 import pub.devrel.easypermissions.PermissionRequest
 
 /**
+ * 设置Avtivity
  * Created by Adolph on 2018/7/10.
  */
 @Route(path = RouterTable.Url.ITEM_SETTING,name = "设置页面")
@@ -86,10 +87,10 @@ class SettingActivity : BaseActivity(),EasyPermissions.PermissionCallbacks {
             _,_,position ->
             when (position){
                 1 -> setBudget(position)
-//                2 -> Floo.navigation(this, Router.Url.URL_TYPE_MANAGE).start()
+                2 -> ARouter.getInstance().build(RouterTable.Url.ITEM_TYPE_MANAGE).navigation()
                 6 -> showBackupDialog()
                 7 -> showRestoreDialog()
-//                10 -> Floo.navigation(this, Router.Url.URL_ABOUT).start()
+                10 -> ARouter.getInstance().build(RouterTable.Url.ITEM_TYPE_MANAGE)
                 11 -> AndroidUtil.openWeb(this, Constant.URL_HELP)
                 else -> {
                 }

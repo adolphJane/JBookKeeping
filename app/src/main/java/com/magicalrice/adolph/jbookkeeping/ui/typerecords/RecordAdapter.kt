@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package me.bakumon.moneykeeper.ui.typerecords
+package com.magicalrice.adolph.jbookkeeping.ui.typerecords
 
 import com.magicalrice.adolph.jbookkeeping.BR
 import com.magicalrice.adolph.jbookkeeping.R

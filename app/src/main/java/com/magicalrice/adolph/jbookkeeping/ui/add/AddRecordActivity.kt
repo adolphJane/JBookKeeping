@@ -24,6 +24,7 @@ import io.reactivex.schedulers.Schedulers
 import java.util.*
 
 /**
+ * 添加记录Activity
  * Created by Adolph on 2018/7/11.
  */
 @Route(path = RouterTable.Url.ITEM_ADD_RECORD, name = "添加记录")
@@ -205,7 +206,8 @@ class AddRecordActivity : BaseActivity(){
 
                 }) { throwable ->
                     ToastUtils.show(R.string.toast_get_types_fail)
-                    Logger.e("获取类型数据失败", throwable)
+                    Logger.e("Hello")
+                    Logger.e(throwable, "获取类型数据失败")
                 })
     }
 

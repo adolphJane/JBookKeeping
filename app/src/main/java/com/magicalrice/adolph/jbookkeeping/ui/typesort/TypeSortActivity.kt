@@ -1,26 +1,11 @@
-/*
- * Copyright 2018 Bakumon. https://github.com/Bakumon
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- *  limitations under the License.
- */
-
-package me.bakumon.moneykeeper.ui.typesort
+package com.magicalrice.adolph.jbookkeeping.ui.typesort
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.util.Log
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.chad.library.adapter.base.callback.ItemDragAndSwipeCallback
 import com.magicalrice.adolph.jbookkeeping.Injection
 import com.magicalrice.adolph.jbookkeeping.R
@@ -32,14 +17,6 @@ import com.magicalrice.adolph.jbookkeeping.datasource.BackupFailException
 import com.magicalrice.adolph.jbookkeeping.utils.ToastUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import me.bakumon.moneykeeper.Injection
-import me.bakumon.moneykeeper.R
-import me.bakumon.moneykeeper.Router
-import me.bakumon.moneykeeper.base.BaseActivity
-import me.bakumon.moneykeeper.database.entity.RecordType
-import me.bakumon.moneykeeper.databinding.ActivityTypeSortBinding
-import me.bakumon.moneykeeper.datasource.BackupFailException
-import me.bakumon.moneykeeper.utill.ToastUtils
 
 /**
  * 类型排序
@@ -47,6 +24,7 @@ import me.bakumon.moneykeeper.utill.ToastUtils
  * @author bakumon https://bakumon.me
  * @date 2018/5/10
  */
+@Route(path = RouterTable.Url.ITEM_TYPE_SORT, name = "类型排序")
 class TypeSortActivity : BaseActivity() {
 
     private lateinit var mBinding: ActivityTypeSortBinding
@@ -69,7 +47,7 @@ class TypeSortActivity : BaseActivity() {
     private fun initView() {
         mType = intent.getIntExtra(RouterTable.ExtraKey.KEY_TYPE, RecordType.TYPE_OUTLAY)
 
-        mBinding.titleBar?.ibtClose?.setOnClickListener { finish() }
+        mBinding.titleBar?.btnBack?.setOnClickListener { finish() }
         mBinding.titleBar?.title = getString(R.string.text_title_drag_sort)
         mBinding.titleBar?.tvRight?.text = getString(R.string.text_done)
         mBinding.titleBar?.tvRight?.setOnClickListener { sortRecordTypes() }

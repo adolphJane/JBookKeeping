@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import io.reactivex.disposables.CompositeDisposable
 
 /**
+ * BaseFragment
  * Created by Adolph on 2018/7/6.
  */
 
@@ -32,6 +33,7 @@ abstract class BaseFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         dataBinding = DataBindingUtil.inflate(inflater,layoutId,container,false)
         val rootView = dataBinding.root
+        onInit(savedInstanceState)
         return rootView
     }
 
@@ -42,6 +44,12 @@ abstract class BaseFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        initData()
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        this.isVisibleToUser = isVisibleToUser
         initData()
     }
 

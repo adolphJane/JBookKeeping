@@ -18,6 +18,7 @@ import com.magicalrice.adolph.jbookkeeping.databinding.LayoutKeyboardBinding
 import com.magicalrice.adolph.jbookkeeping.utils.SoftInputUtils
 
 /**
+ * 自定义键盘
  * Created by Adolph on 2018/7/13.
  */
 class KeyboardView @JvmOverloads constructor(context: Context,attrs: AttributeSet? = null,defStyleAttr: Int = 0): LinearLayout(context,attrs, defStyleAttr) {
@@ -25,7 +26,7 @@ class KeyboardView @JvmOverloads constructor(context: Context,attrs: AttributeSe
     var mOnAffirmClickListener: ((String) -> Unit)? = null
 
     init {
-
+        init(context)
     }
 
     fun setAffirmEnable(enable: Boolean) {

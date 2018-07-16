@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package me.bakumon.moneykeeper.ui.typerecords
+package com.magicalrice.adolph.jbookkeeping.ui.typerecords
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -115,7 +115,8 @@ class TypeRecordsFragment : BaseFragment() {
             return
         }
         ARouter.getInstance().build(RouterTable.Url.ITEM_ADD_RECORD)
-                .withSerializable(RouterTable.ExtraKey.KEY_RECORD_BEAN,record).navigation()
+                .withSerializable(RouterTable.ExtraKey.KEY_RECORD_BEAN, record)
+                .navigation()
     }
 
     private fun deleteRecord(record: RecordWithType) {

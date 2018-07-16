@@ -8,13 +8,15 @@ import com.magicalrice.adolph.jbookkeeping.ui.addtype.AddTypeViewModel
 import com.magicalrice.adolph.jbookkeeping.ui.home.HomeViewModel
 import com.magicalrice.adolph.jbookkeeping.ui.statistic.bill.BillViewModel
 import com.magicalrice.adolph.jbookkeeping.ui.statistic.reports.ReportsViewModel
-import me.bakumon.moneykeeper.ui.typemanage.TypeManageViewModel
-import me.bakumon.moneykeeper.ui.typerecords.TypeRecordsViewModel
-import me.bakumon.moneykeeper.ui.typesort.TypeSortViewModel
+import com.magicalrice.adolph.jbookkeeping.ui.typemanage.TypeManageViewModel
+import com.magicalrice.adolph.jbookkeeping.ui.typerecords.TypeRecordsViewModel
+import com.magicalrice.adolph.jbookkeeping.ui.typesort.TypeSortViewModel
 
 /**
+ * ViewModel工厂
  * Created by Adolph on 2018/7/9.
  */
+@Suppress("UNCHECKED_CAST")
 class ViewModelFactory(private val mDataSource: AppDataSource) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when {
@@ -29,5 +31,4 @@ class ViewModelFactory(private val mDataSource: AppDataSource) : ViewModelProvid
             else -> throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
-
 }

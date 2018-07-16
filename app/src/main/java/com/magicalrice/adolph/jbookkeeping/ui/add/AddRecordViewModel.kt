@@ -1,6 +1,5 @@
 package com.magicalrice.adolph.jbookkeeping.ui.add
 
-import com.magicalrice.adolph.jbookkeeping.base.BaseDataBindingAdapter
 import com.magicalrice.adolph.jbookkeeping.base.BaseViewModel
 import com.magicalrice.adolph.jbookkeeping.database.entity.Record
 import com.magicalrice.adolph.jbookkeeping.database.entity.RecordType
@@ -9,6 +8,7 @@ import io.reactivex.Completable
 import io.reactivex.Flowable
 
 /**
+ * 添加记录ViewModel
  * Created by Adolph on 2018/7/13.
  */
 class AddRecordViewModel(dataSource: AppDataSource) : BaseViewModel(dataSource) {

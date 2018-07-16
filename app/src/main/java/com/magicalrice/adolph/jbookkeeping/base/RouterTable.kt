@@ -1,6 +1,7 @@
 package com.magicalrice.adolph.jbookkeeping.base
 
 /**
+ * 路由表
  * Created by Adolph on 2018/7/10.
  */
 object RouterTable {
@@ -19,6 +20,10 @@ object RouterTable {
         const val ITEM_ADD_TYPE = GROUP_ADD + "/type"
         const val ITEM_STATISTIC = GROUP_STATISTIC + "/statistic"
         const val ITEM_TYPE_SORT = GROUP_SETTING + "/sort"
+        const val ITEM_TYPE_MANAGE = GROUP_SETTING + "/manage"
+        const val ITEM_ABOUT = GROUP_SETTING + "/about"
+        const val ITEM_OPEN_SOURCE = GROUP_SETTING + "/open_source"
+        const val ITEM_TYPE_RECORD = GROUP_ADD + "/type_record"
     }
 
     /**

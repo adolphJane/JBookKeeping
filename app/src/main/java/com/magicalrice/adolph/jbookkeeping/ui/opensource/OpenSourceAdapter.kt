@@ -14,25 +14,22 @@
  *  limitations under the License.
  */
 
-package com.magicalrice.adolph.jbookkeeping.ui.typemanage
+package com.magicalrice.adolph.jbookkeeping.ui.opensource
 
-import com.magicalrice.adolph.jbookkeeping.base.BaseViewModel
-import com.magicalrice.adolph.jbookkeeping.database.entity.RecordType
-import com.magicalrice.adolph.jbookkeeping.datasource.AppDataSource
-import io.reactivex.Completable
-import io.reactivex.Flowable
+import com.magicalrice.adolph.jbookkeeping.BR
+import com.magicalrice.adolph.jbookkeeping.R
+import com.magicalrice.adolph.jbookkeeping.base.BaseDataBindingAdapter
 
 /**
- * 记一笔界面 ViewModel
+ * 开源许可证数据适配器
  *
  * @author Bakumon https://bakumon.me
  */
-class TypeManageViewModel(dataSource: AppDataSource) : BaseViewModel(dataSource) {
+class OpenSourceAdapter(data: List<OpenSourceBean>?) : BaseDataBindingAdapter<OpenSourceBean>(R.layout.item_open_source, data) {
 
-    val allRecordTypes: Flowable<List<RecordType>>
-        get() = mDataSource.getAllRecordType()
-
-    fun deleteRecordType(recordType: RecordType): Completable {
-        return mDataSource.deleteRecordType(recordType)
+    override fun convert(helper: BaseDataBindingAdapter.DataBindingViewHolder, item: OpenSourceBean) {
+        val binding = helper.binding
+        binding.setVariable(BR.openSource, item)
+        binding.executePendingBindings()
     }
 }

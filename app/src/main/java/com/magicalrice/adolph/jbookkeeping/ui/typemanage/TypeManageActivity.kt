@@ -1,20 +1,4 @@
-/*
- * Copyright 2018 Bakumon. https://github.com/Bakumon
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- *  limitations under the License.
- */
-
-package me.bakumon.moneykeeper.ui.typemanage
+package com.magicalrice.adolph.jbookkeeping.ui.typemanage
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -22,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import com.afollestad.materialdialogs.MaterialDialog
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.magicalrice.adolph.jbookkeeping.Injection
 import com.magicalrice.adolph.jbookkeeping.R
@@ -40,6 +25,7 @@ import io.reactivex.schedulers.Schedulers
  * @author bakumon https://bakumon.me
  * @date 2018/5/3
  */
+@Route(path = RouterTable.Url.ITEM_TYPE_MANAGE, name = "类型管理")
 class TypeManageActivity : BaseActivity() {
 
     private lateinit var mBinding: ActivityTypeManageBinding
@@ -108,6 +94,13 @@ class TypeManageActivity : BaseActivity() {
                 .negativeText(R.string.text_button_cancel)
                 .onPositive({ _, _ -> deleteType(recordType) })
                 .show()
+    }
+
+    @Suppress("never used")
+    fun addType(view: View) {
+        ARouter.getInstance().build(RouterTable.Url.ITEM_ADD_TYPE)
+                .withInt(RouterTable.ExtraKey.KEY_TYPE, mCurrentType)
+                .navigation()
     }
 
     private fun deleteType(recordType: RecordType) {

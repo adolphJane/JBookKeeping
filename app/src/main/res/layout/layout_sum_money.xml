@@ -19,10 +19,11 @@
         android:paddingRight="15dp">
 
         <RadioButton
-            android:id="@+id/tb_outlay"
+            android:id="@+id/rb_outlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorTextWhite2"
+            android:layout_weight="1"
             app:text_statistics_outlay="@{sumMoneyBeanList}"/>
 
         <RadioButton
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:textColor="@color/colorTextWhite2"
+            android:layout_weight="1"
             app:text_statistics_income="@{sumMoneyBeanList}"/>
 
         <TextView
