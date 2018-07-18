@@ -13,12 +13,10 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.magicalrice.adolph.jbookkeeping.BuildConfig
 import com.magicalrice.adolph.jbookkeeping.ConfigManager
-import com.magicalrice.adolph.jbookkeeping.Constant
 import com.magicalrice.adolph.jbookkeeping.R
 import com.magicalrice.adolph.jbookkeeping.base.BaseActivity
 import com.magicalrice.adolph.jbookkeeping.base.RouterTable
 import com.magicalrice.adolph.jbookkeeping.databinding.ActivitySettingBinding
-import com.magicalrice.adolph.jbookkeeping.utils.AndroidUtil
 import com.magicalrice.adolph.jbookkeeping.utils.ToastUtils
 import com.orhanobut.logger.Logger
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -90,8 +88,8 @@ class SettingActivity : BaseActivity(),EasyPermissions.PermissionCallbacks {
                 2 -> ARouter.getInstance().build(RouterTable.Url.ITEM_TYPE_MANAGE).navigation()
                 6 -> showBackupDialog()
                 7 -> showRestoreDialog()
-                10 -> ARouter.getInstance().build(RouterTable.Url.ITEM_TYPE_MANAGE)
-                11 -> AndroidUtil.openWeb(this, Constant.URL_HELP)
+//                10 -> ARouter.getInstance().build(RouterTable.Url.ITEM_ABOUT).navigation()
+//                11 -> AndroidUtil.openWeb(this, Constant.URL_HELP)
                 else -> {
                 }
             }
