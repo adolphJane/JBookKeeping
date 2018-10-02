@@ -1,6 +1,5 @@
 package com.magicalrice.adolph.jbookkeeping.base
 
-import android.content.res.Configuration
 import android.content.res.Resources
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding

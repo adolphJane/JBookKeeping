@@ -5,7 +5,6 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.View
 import com.afollestad.materialdialogs.MaterialDialog
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -27,7 +26,7 @@ import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 import pub.devrel.easypermissions.PermissionRequest
 
-@Route(path = RouterTable.ITEM_HOME,name = "主页面")
+@Route(path = RouterTable.Url.ITEM_HOME, name = "主页面")
 class HomeActivity : BaseActivity(), EasyPermissions.PermissionCallbacks, EasyPermissions.RationaleCallbacks {
     private lateinit var mBinding: ActivityHomeBinding
     private lateinit var mViewModel: HomeViewModel
@@ -75,7 +74,7 @@ class HomeActivity : BaseActivity(), EasyPermissions.PermissionCallbacks, EasyPe
 
         //快速记账
         if (ConfigManager.isFast) {
-
+            ARouter.getInstance().build(RouterTable.Url.ITEM_ADD_RECORD).navigation()
         }
     }
 
@@ -95,16 +94,19 @@ class HomeActivity : BaseActivity(), EasyPermissions.PermissionCallbacks, EasyPe
         getCurrentMonthRecords()
     }
 
+    @Suppress("never used")
     fun addRecordClick(view: View) {
-
+        ARouter.getInstance().build(RouterTable.Url.ITEM_ADD_RECORD).navigation()
     }
 
+    @Suppress("never used")
     fun statisticsClick(view: View) {
-
+        ARouter.getInstance().build(RouterTable.Url.ITEM_STATISTIC).navigation()
     }
 
+    @Suppress("never used")
     fun settingClick(view: View) {
-        ARouter.getInstance().build(RouterTable.ITEM_SETTING).navigation()
+        ARouter.getInstance().build(RouterTable.Url.ITEM_SETTING).navigation()
     }
 
     private fun showOperateDialog(record: RecordWithType) {
@@ -121,7 +123,9 @@ class HomeActivity : BaseActivity(), EasyPermissions.PermissionCallbacks, EasyPe
     }
 
     private fun modifyRecord(record: RecordWithType) {
-
+        ARouter.getInstance().build(RouterTable.Url.ITEM_ADD_RECORD)
+                .withSerializable(RouterTable.ExtraKey.KEY_RECORD_BEAN, record)
+                .navigation()
     }
 
     private fun deleteRecord(record: RecordWithType) {
@@ -239,10 +243,12 @@ class HomeActivity : BaseActivity(), EasyPermissions.PermissionCallbacks, EasyPe
         super.onResume()
         getCurrentMonthSumMoney()
         if (ConfigManager.isSuccessive) {
-//            mBinding.btnAddRecord.setOnLongClickListener {
-//
-//                false
-//            }
+            mBinding.btnAddRecord.setOnLongClickListener {
+                ARouter.getInstance().build(RouterTable.Url.ITEM_ADD_RECORD)
+                        .withBoolean(RouterTable.ExtraKey.KEY_IS_SUCCESSIVE, true)
+                        .navigation()
+                false
+            }
         } else {
             mBinding.btnAddRecord.setOnLongClickListener(null)
         }

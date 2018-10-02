@@ -16,6 +16,7 @@ import me.bakumon.moneykeeper.view.pagerlayoutmanager.PagerGridLayoutManager
 import me.bakumon.moneykeeper.view.pagerlayoutmanager.PagerGridSnapHelper
 
 /**
+ * 类型页自定义View
  * Created by Adolph on 2018/7/11.
  */
 class TypePageView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : LinearLayout(context, attrs, defStyleAttr) {
@@ -60,12 +61,8 @@ class TypePageView @JvmOverloads constructor(context: Context, attrs: AttributeS
             }
 
             override fun onPageSelect(pageIndex: Int) {
-                if (pageSize > 1) {
-                    mBinding.indicator.visibility = View.VISIBLE
-                    mBinding.indicator.setTotal(pageSize,currentPageIndex)
-                } else {
-                    mBinding.indicator.visibility = View.INVISIBLE
-                }
+                currentPageIndex = pageIndex
+                setIndicator()
             }
 
             private fun setIndicator() {

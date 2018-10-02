@@ -16,6 +16,7 @@ import com.orhanobut.logger.Logger
 import java.math.BigDecimal
 
 /**
+ * DataBinding适配器
  * Created by Adolph on 2018/7/9.
  */
 object BindAdapter {
@@ -27,7 +28,7 @@ object BindAdapter {
 
     @JvmStatic
     @BindingAdapter("custom_margin_bottom")
-    fun setMarginBottom(view: View,bottomMargin:Int) {
+    fun setMarginBottom(view: View, bottomMargin: Int) {
         val layoutParams = view.layoutParams
         val marginParams: ViewGroup.MarginLayoutParams
         marginParams = layoutParams as? ViewGroup.MarginLayoutParams ?: ViewGroup.MarginLayoutParams(layoutParams)
@@ -36,37 +37,37 @@ object BindAdapter {
 
     @JvmStatic
     @BindingAdapter("text_check_null")
-    fun setText(textView: TextView,text:String) {
+    fun setText(textView: TextView, text: String) {
         textView.text = text
         textView.visibility = if (TextUtils.isEmpty(text)) View.GONE else View.VISIBLE
     }
 
     @JvmStatic
     @BindingAdapter("src_img_name")
-    fun setImg(imageView: ImageView,imgName:String) {
+    fun setImg(imageView: ImageView, imgName: String) {
         val resId = imageView.context.resources.getIdentifier(
                 if (TextUtils.isEmpty(imgName)) "type_item_default" else imgName,
-                "mimap",
+                "mipmap",
                 imageView.context.packageName)
         imageView.setImageResource(resId)
     }
 
     @JvmStatic
     @BindingAdapter("text_money")
-    fun setMoneyText(textView: TextView,bigDecimal: BigDecimal) {
+    fun setMoneyText(textView: TextView, bigDecimal: BigDecimal) {
         textView.text = BigDecimalUtil.fen2Yuan(bigDecimal)
     }
 
     @JvmStatic
     @BindingAdapter("text_money_with_prefix")
-    fun setMoneyTextWithPrefix(textView: TextView,bigDecimal: BigDecimal) {
+    fun setMoneyTextWithPrefix(textView: TextView, bigDecimal: BigDecimal) {
         val text = textView.resources.getString(R.string.text_money_symbol) + BigDecimalUtil.fen2Yuan(bigDecimal)
         textView.text = text
     }
 
     @JvmStatic
     @BindingAdapter("text_income_or_budget")
-    fun setTitleIncomeOrBudget(textView: TextView,list: List<SumMoneyBean>?) {
+    fun setTitleIncomeOrBudget(textView: TextView, list: List<SumMoneyBean>?) {
         Logger.e("text_income_or_budget")
         if (list != null) {
             if (ConfigManager.budget > 0) {

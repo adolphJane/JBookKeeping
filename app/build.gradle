@@ -167,4 +167,8 @@ dependencies {
     implementation "org.ocpsoft.prettytime:prettytime:$rootProject.prettyVersion"
 
     implementation "com.android.support:customtabs:$rootProject.supportLibVersion"
+    //datepicker
+    implementation "com.wdullaer:materialdatetimepicker:$rootProject.datePickVersion"
+    //chart
+    implementation "com.github.PhilJay:MPAndroidChart:$rootProject.chartVersion"
 }

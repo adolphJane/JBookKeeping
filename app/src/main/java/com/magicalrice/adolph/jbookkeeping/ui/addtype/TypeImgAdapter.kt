@@ -18,8 +18,8 @@ class TypeImgAdapter(data: List<TypeImgBean>?) : BaseDataBindingAdapter<TypeImgB
         get() = getItem(mCurrentCheckPosition)
 
     override fun convert(helper: DataBindingViewHolder, item: TypeImgBean) {
-        var binding = helper.binding
-        binding.setVariable(BR.typeImg,true)
+        val binding = helper.binding
+        binding.setVariable(BR.typeImg, item)
         binding.executePendingBindings()
     }
 
